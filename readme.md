@@ -2,7 +2,27 @@
 
 This package is a fork of [laroute](https://github.com/aaronlord/laroute) with added supporto to laravel 6.0
 
-# Laroute
+###### composer.json
+```json
+{
+	"require" : {
+		"noonic/routejs" : "dev-master"
+	}
+}
+```
+
+There is no need to register the service providers, since it should be detected automatically.
+
+### Configure (optional)
+
+Copy the packages config files.
+
+```
+php artisan vendor:publish --provider='Noonic\Routejs\RoutejsServiceProvider'
+```
+
+
+# [old documentation] Laroute
 
 [Laravel](http://laravel.com/) has some pretty sweet [helper functions](http://laravel.com/docs/helpers#urls) for generating urls/links and its auto-json-magic makes it building APIs super easy. It's my go-to choice for building single-page js apps, but routing can quickly become a bit of a pain.
 
