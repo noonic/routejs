@@ -1,23 +1,23 @@
 <?php
 
-namespace Lord\Laroute\Console\Commands;
+namespace Noonic\Routejs\Console\Commands;
 
-use Lord\Laroute\Routes\Collection as Routes;
-use Lord\Laroute\Generators\GeneratorInterface as Generator;
+use Noonic\Routejs\Routes\Collection as Routes;
+use Noonic\Routejs\Generators\GeneratorInterface as Generator;
 
 use Illuminate\Config\Repository as Config;
 use Illuminate\Console\Command;
 
 use Symfony\Component\Console\Input\InputOption;
 
-class LarouteGeneratorCommand extends Command
+class RoutejsGeneratorCommand extends Command
 {
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'laroute:generate';
+    protected $name = 'routejs:generate';
 
     /**
      * The console command description.
@@ -36,14 +36,14 @@ class LarouteGeneratorCommand extends Command
     /**
      * An array of all the registered routes.
      *
-     * @var \Lord\Laroute\Routes\Collection
+     * @var \Noonic\Routejs\Routes\Collection
      */
     protected $routes;
 
     /**
      * The generator instance.
      *
-     * @var \Lord\Laroute\Generators\GeneratorInterface
+     * @var \Noonic\Routejs\Generators\GeneratorInterface
      */
     protected $generator;
 
@@ -90,7 +90,7 @@ class LarouteGeneratorCommand extends Command
      */
     protected function getTemplatePath()
     {
-        return $this->config->get('laroute.template');
+        return $this->config->get('routejs.template');
     }
 
     /**
@@ -102,9 +102,9 @@ class LarouteGeneratorCommand extends Command
     {
         $namespace  = $this->getOptionOrConfig('namespace');
         $routes     = $this->routes->toJSON();
-        $absolute   = $this->config->get('laroute.absolute', false);
+        $absolute   = $this->config->get('routejs.absolute', false);
         $rootUrl    = $this->config->get('app.url', '');
-        $prefix		= $this->config->get('laroute.prefix', '');
+        $prefix		= $this->config->get('routejs.prefix', '');
 
         return compact('namespace', 'routes', 'absolute', 'rootUrl', 'prefix');
     }
@@ -136,7 +136,7 @@ class LarouteGeneratorCommand extends Command
             return $option;
         }
 
-        return $this->config->get("laroute.{$key}");
+        return $this->config->get("routejs.{$key}");
     }
 
     /**
@@ -151,23 +151,23 @@ class LarouteGeneratorCommand extends Command
                 'path',
                 'p',
                 InputOption::VALUE_OPTIONAL,
-                sprintf('Path to the javscript assets directory (default: "%s")', $this->config->get('laroute.path'))
+                sprintf('Path to the javscript assets directory (default: "%s")', $this->config->get('routejs.path'))
             ],
             [
                 'filename',
                 'f',
                 InputOption::VALUE_OPTIONAL,
-                sprintf('Filename of the javascript file (default: "%s")', $this->config->get('laroute.filename'))
+                sprintf('Filename of the javascript file (default: "%s")', $this->config->get('routejs.filename'))
             ],
             [
                 'namespace',
                 null,
-                InputOption::VALUE_OPTIONAL, sprintf('Javascript namespace for the functions (think _.js) (default: "%s")', $this->config->get('laroute.namespace'))
+                InputOption::VALUE_OPTIONAL, sprintf('Javascript namespace for the functions (think _.js) (default: "%s")', $this->config->get('routejs.namespace'))
             ],
             [
                 'prefix',
                 'pr',
-                InputOption::VALUE_OPTIONAL, sprintf('Prefix for the generated URLs (default: "%s")', $this->config->get('laroute.prefix'))
+                InputOption::VALUE_OPTIONAL, sprintf('Prefix for the generated URLs (default: "%s")', $this->config->get('routejs.prefix'))
             ],
         ];
     }
