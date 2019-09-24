@@ -1,6 +1,6 @@
 # [Noonic] Routejs
 
-This package is a fork of [laroute](https://github.com/aaronlord/laroute) with added supporto to laravel 6.0
+This package is a fork of [laroute](https://github.com/aaronlord/laroute) with added support to laravel 6.0
 
 ###### composer.json
 ```json
