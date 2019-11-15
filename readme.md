@@ -6,7 +6,7 @@ This package is a fork of [laroute](https://github.com/aaronlord/laroute) with a
 ```json
 {
 	"require" : {
-		"noonic/routejs" : "6.0.*"
+		"noonic/routejs" : "6.*"
 	}
 }
 ```
